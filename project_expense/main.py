@@ -3,7 +3,7 @@ from helper import nm
 from colorama import Fore,Back,init,Style
 init(autoreset=True)
 class ExpenseManager:
- def __init__(self,file="daily.json"): 
+ def __init__(self,file): 
   self.file=file
   self.expenses=self.load_expenses()
  def load_expenses(self):
@@ -138,7 +138,11 @@ def menu():
  print(Fore.WHITE+"_____________________________________________")
 
 def main():
- me=ExpenseManager()
+ appdata=os.getenv("APPDATA")
+ folder=os.path.join(appdata,"ExpenseManager")
+ os.makedirs(folder,exist_ok=True ) 
+ data_file=os.path.join(folder,"daily.json")
+ me=ExpenseManager(file=data_file)
  while True:
   while True:
    try:
@@ -148,13 +152,14 @@ def main():
     print(Fore.RED+Style.BRIGHT+"Invalid Command")
   match response:
    case 402:
-    open("daily.json", "a").close()
-    with open("daily.json","w") as f:
+    
+    
+    with open(data_file,"w") as f:
      f.write("[]")
     os.system('cls')
     print("__________________________________________")
     print(f"filename {Style.BRIGHT+Fore.CYAN}daily.json{Style.RESET_ALL} created on current directory. ")
-    print(f"Current Directory : {Style.BRIGHT+Fore.CYAN}{os.getcwd()}") 
+    print(f"Directory : {Style.BRIGHT+Fore.CYAN} C:/Users/<name>/AppData") 
     print(Fore.WHITE+Style.BRIGHT+"__________________________________________")
     r=input("Enter to continue...")
     os.system('cls')
