@@ -1,5 +1,5 @@
 import os,time,datetime,json
-from helper1 import nm
+from helper import nm
 from colorama import Fore,Back,init,Style
 init(autoreset=True)
 class ExpenseManager:
@@ -56,7 +56,7 @@ class ExpenseManager:
      break
     except:
      print("Invalid Month!")
-   os.system('clear')   
+   os.system('cls')   
    print("_____________________________________________")
    count=0
    total=0
@@ -71,7 +71,7 @@ class ExpenseManager:
    print(Fore.GREEN+Style.BRIGHT+f"Total Expenses Of {nm(m)} :{Fore.RED+Style.BRIGHT} {total}{Style.RESET_ALL}")
    print(Fore.WHITE+Style.BRIGHT+"_____________________________________________")
    r=input("Enter to continue...")
-   os.system('clear')
+   os.system('cls')
   def yearly():
    while True:
     try:
@@ -79,7 +79,7 @@ class ExpenseManager:
      break
     except:
      print("Invalid Year!")
-   os.system('clear')
+   os.system('cls')
    
    print(Fore.WHITE+Style.BRIGHT+"_____________________________________________")
    count=0
@@ -95,7 +95,7 @@ class ExpenseManager:
    print(f"Total Expenses Of Year {y} : {Style.BRIGHT+Fore.RED}{total}")
    print(Fore.WHITE+Style.BRIGHT+"_____________________________________________")
    r=input(Fore.GREEN+Style.BRIGHT+"Enter to continue")
-   os.system('clear')
+   os.system('cls')
   def view_main():
    view_menu()
    while True:
@@ -122,7 +122,7 @@ class ExpenseManager:
  
 
 def menu():
- os.system('clear')
+ os.system('cls')
  print(" ")
  print(Fore.WHITE+"_____________________________________________")
  print(" ")
@@ -148,16 +148,16 @@ def main():
     print(Fore.RED+Style.BRIGHT+"Invalid Command")
   match response:
    case 402:
-    os.system('touch daily.json')
+    open("daily.json", "a").close()
     with open("daily.json","w") as f:
      f.write("[]")
-    os.system('clear')
+    os.system('cls')
     print("__________________________________________")
     print(f"filename {Style.BRIGHT+Fore.CYAN}daily.json{Style.RESET_ALL} created on current directory. ")
     print(f"Current Directory : {Style.BRIGHT+Fore.CYAN}{os.getcwd()}") 
     print(Fore.WHITE+Style.BRIGHT+"__________________________________________")
     r=input("Enter to continue...")
-    os.system('clear')
+    os.system('cls')
    case 1:
     while True:
      try:
@@ -177,13 +177,13 @@ def main():
       break
      except:
       print(Fore.RED+Style.BRIGHT+"Invalid Notes")
-    os.system('clear')
+    os.system('cls')
     print("___________________________________________")
     me.add_expenses(amount,category,note)
     print(Fore.CYAN+Style.BRIGHT+"Added Successfully!")
     print("___________________________________________")
     r=input("Enter to continue...")
-    os.system('clear')
+    os.system('cls')
    case 2:
 
     me.view_expenses()
@@ -197,19 +197,19 @@ def main():
      except:
       print(Fore.CYAN+Style.BRIGHT+"Invalid Index ")
     me.delete_expenses(index)
-    os.system('clear')    
+    os.system('cls')    
     print(Fore.CYAN+Style.BRIGHT+"Deleted SuccessFully!") 
     print(Fore.WHITE+Style.BRIGHT+"___________________________________________")
     r=input("Enter to continue...")
-    os.system('clear')
+    os.system('cls')
    case 4:
-    os.system('clear')
+    os.system('cls')
     print(Fore.CYAN+Style.BRIGHT+"Thanks From Certified Human".center(45))
     break
   menu()
 
 
 if __name__ == "__main__":
- os.system('clear')
+ os.system('cls')
  menu()
  main()
